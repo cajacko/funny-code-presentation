@@ -1,6 +1,6 @@
 export default [
   {
-    title: "How to write funny code",
+    title: "Funny code and how to write it",
     heading: "A 10 step programme in whimsy, hilarity and shameless puns",
     type: "TITLE"
   },
