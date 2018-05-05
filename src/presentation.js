@@ -2,7 +2,7 @@
 import React from "react";
 
 // Import Spectacle Core tags
-import { Deck, Heading, Slide, Text, CodePane } from "spectacle";
+import { Deck, Heading, Slide, Text, CodePane, Fill, Fit } from "spectacle";
 
 // Import theme
 import createTheme from "spectacle/lib/themes/default";
@@ -34,7 +34,7 @@ export default class Presentation extends React.Component {
         theme={theme}
       >
         {content.map(
-          ({ title, type, example, heading }, i) =>
+          ({ title, type, examples, heading }, i) =>
             type === "TITLE" ? (
               <Slide key={i} transition={["zoom"]} bgColor="primary">
                 <Heading size={1} fit caps lineHeight={1} textColor="secondary">
@@ -45,19 +45,39 @@ export default class Presentation extends React.Component {
                 </Text>
               </Slide>
             ) : (
-              <Slide key={i} transition={["fade"]} bgColor="tertiary">
-                <Heading size={1} textColor="secondary" margin="">
-                  {title}
-                </Heading>
+              examples &&
+              examples.map(example => (
+                <Slide key={example} transition={["fade"]} bgColor="tertiary">
+                  <div
+                    style={{
+                      height: "10000px",
+                      width: "10000px",
+                      maxHeight: "100%",
+                      maxWidth: "100%",
+                      display: "flex",
+                      flexDirection: "column"
+                    }}
+                  >
+                    <Fit>
+                      <Heading size={3} textColor="secondary">
+                        {title}
+                      </Heading>
+                    </Fit>
 
-                <CodePane
-                  lang="markup"
-                  theme="light"
-                  source={example}
-                  margin="20px auto"
-                  overflow="overflow"
-                />
-              </Slide>
+                    {example && (
+                      <Fill>
+                        <CodePane
+                          lang="markup"
+                          theme="light"
+                          source={example}
+                          margin="20px auto"
+                          overflow="overflow"
+                        />
+                      </Fill>
+                    )}
+                  </div>
+                </Slide>
+              ))
             )
         )}
       </Deck>

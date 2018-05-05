@@ -5,8 +5,9 @@ export default [
     type: "TITLE"
   },
   {
-    title: "Congratulate",
-    example: `
+    title: "Congratulate the bold and brave",
+    examples: [
+      `
 /**
  * For the brave souls who get this far: You are the chosen ones,
  * the valiant knights of programming who toil away, without rest,
@@ -15,6 +16,17 @@ export default [
  * never gonna run around and desert you. Never gonna make you cry,
  * never gonna say goodbye. Never gonna tell a lie and hurt you.
  */
-    `
-  }
+    `,
+      `Hello`
+    ]
+  },
+  { title: "Apologise" },
+  { title: "Honesty" },
+  { title: "Artwork" },
+  { title: "Puns" },
+  { title: "Mr Obvious" },
+  { title: "Complaints" },
+  { title: "References" },
+  { title: "Arguments" },
+  { title: "Factual randomness" }
 ];
