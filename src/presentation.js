@@ -2,7 +2,17 @@
 import React from "react";
 
 // Import Spectacle Core tags
-import { Deck, Heading, Slide, Text, CodePane, Fill, Fit } from "spectacle";
+import {
+  Deck,
+  Heading,
+  Slide,
+  Text,
+  CodePane,
+  Fill,
+  Fit,
+  ListItem,
+  List
+} from "spectacle";
 
 // Import theme
 import createTheme from "spectacle/lib/themes/default";
@@ -34,7 +44,7 @@ export default class Presentation extends React.Component {
         theme={theme}
       >
         {content.map(
-          ({ title, type, examples, heading }, i) =>
+          ({ title, type, examples, heading, hide }, i) =>
             type === "TITLE" ? (
               <Slide key={i} transition={["zoom"]} bgColor="primary">
                 <Heading size={1} fit caps lineHeight={1} textColor="secondary">
@@ -46,6 +56,7 @@ export default class Presentation extends React.Component {
               </Slide>
             ) : (
               examples &&
+              !hide &&
               examples.map(example => (
                 <Slide key={example} transition={["fade"]} bgColor="tertiary">
                   <div
@@ -80,6 +91,22 @@ export default class Presentation extends React.Component {
               ))
             )
         )}
+
+        <Slide transition={["zoom"]} bgColor="primary">
+          <Heading size={4} textColor="secondary" fit caps lineHeight={1}>
+            That's all folks
+          </Heading>
+          <Text margin="10px 0 0" textColor="tertiary" size={1}>
+            charliejackson.com
+          </Text>
+          <List>
+            {content.map(
+              ({ hide, title, type }) =>
+                !hide &&
+                type !== "TITLE" && <ListItem fontSize={12}>{title}</ListItem>
+            )}
+          </List>
+        </Slide>
       </Deck>
     );
   }
