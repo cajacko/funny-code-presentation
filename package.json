@@ -11,7 +11,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "docs": "yarn build && ncp build .",
+    "docs": "yarn build && rimraf docs && ncp build docs",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
